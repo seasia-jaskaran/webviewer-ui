@@ -7,6 +7,14 @@ import defaultTool from 'constants/defaultTool';
 import { PRIORITY_TWO } from 'constants/actionPriority';
 import Events from 'constants/events';
 
+
+
+// export const setSideData=(data)=> {
+//   return {
+//     type: data.length ? "DATA_TRUE":"DATA_FALSE",
+//     payload:data
+//   };
+// }
 export const setPresetCropDimensions = (presetCropDimensions) => ({
   type: 'SET_PRESET_CROP_DIMENSIONS',
   payload: { presetCropDimensions },
@@ -247,7 +255,16 @@ export const setSearchPanelWidth = (width) => ({
   type: 'SET_SEARCH_PANEL_WIDTH',
   payload: { width },
 });
-export const setNotesPanelWidth = (width) => ({
+
+// =====================================================
+
+export const MovePanel = (width) => ({
+  // type: 'SET_SEARCH_PANEL_WIDTH',
+  type: 'MOVE_PANEL_WIDTH',
+
+  payload: { width },
+});
+export const setNotesPanelWidth = (width) => ({  
   type: 'SET_NOTES_PANEL_WIDTH',
   payload: { width },
 });
@@ -284,7 +301,7 @@ export const setDocumentContainerHeight = (height) => ({
   payload: { height },
 });
 
-export const enableAllElements = () => ({
+export const enableAllElements = () => ({             
   type: 'ENABLE_ALL_ELEMENTS',
   payload: {},
 });
@@ -372,7 +389,8 @@ export const closeElements = (dataElements) => (dispatch) => {
   }
 };
 
-const rightPanelList = ['searchPanel', 'notesPanel', 'comparePanel', 'redactionPanel', 'wv3dPropertiesPanel', 'textEditingPanel'];
+const rightPanelList = ['searchPanel',"movePanel", 'notesPanel', 'comparePanel', 'redactionPanel', 'wv3dPropertiesPanel', 'textEditingPanel'];
+
 export const toggleElement = (dataElement) => (dispatch, getState) => {
   const state = getState();
 
@@ -560,8 +578,22 @@ export const setSearchResults = (searchResults) => ({
   payload: searchResults,
 });
 
+// =============================================
+
+export const setMoveResults = (moveResults) => ({
+  type: 'SET_MOVE_RESULTS',
+  payload: moveResults,
+});
+
 export const setClearSearchOnPanelClose = (shouldClear) => ({
   type: 'SET_CLEAR_SEARCH_ON_PANEL_CLOSE',
+  payload: shouldClear,
+});
+
+// ======================================================
+
+export const setClearMoveOnPanelClose = (shouldClear) => ({
+  type: 'SET_CLEAR_MOVE_ON_PANEL_CLOSE',
   payload: shouldClear,
 });
 
@@ -637,6 +669,13 @@ export const replaceRedactionSearchPattern = (searchPattern, regex) => ({
   payload: { searchPattern, regex },
 });
 
+// ===================================================
+
+export const replaceRedactionMovePattern = (movePattern, regex) => ({
+  type: 'REPLACE_REDACTION_MOVE_PATTERN',
+  payload: { movePattern, regex },
+});
+
 export const setThumbnailSelectionMode = (thumbnailSelectionMode) => ({
   type: 'SET_THUMBNAIL_SELECTION_MODE',
   payload: { thumbnailSelectionMode },
@@ -646,10 +685,22 @@ export const addRedactionSearchPattern = (searchPattern) => ({
   type: 'ADD_REDACTION_SEARCH_PATTERN',
   payload: { searchPattern },
 });
+// ===========================================================
+export const addRedactionMovePattern = (movePattern) => ({
+  type: 'ADD_REDACTION_MOVE_PATTERN',
+  payload: { movePattern },
+});
 
 export const removeRedactionSearchPattern = (searchPatternType) => ({
   type: 'REMOVE_REDACTION_SEARCH_PATTERN',
   payload: { searchPatternType },
+});
+
+// ===========================================================
+
+export const removeRedactionMovePattern = (movePatternType) => ({
+  type: 'REMOVE_REDACTION_MOVE_PATTERN',
+  payload: { movePatternType },
 });
 
 export const setColorMap = (colorMap) => ({

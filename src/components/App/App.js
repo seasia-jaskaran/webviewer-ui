@@ -18,6 +18,8 @@ import DocumentContainer from 'components/DocumentContainer';
 import LeftPanel from 'components/LeftPanel';
 import NotesPanel from 'components/NotesPanel';
 import SearchPanel from 'components/SearchPanel';
+// ============================================
+import MovePanel from 'components/MovePanel';
 import RightPanel from 'components/RightPanel';
 import AnnotationPopup from 'components/AnnotationPopup';
 import TextPopup from 'components/TextPopup';
@@ -72,7 +74,6 @@ import fireEvent from 'helpers/fireEvent';
 import { prepareMultiTab } from 'helpers/TabManager';
 import Events from 'constants/events';
 import overlays from 'constants/overlays';
-
 import './App.scss';
 
 // TODO: Use constants
@@ -198,6 +199,9 @@ const App = ({ removeEventHandlers }) => {
           <RightPanel dataElement="searchPanel" onResize={(width) => dispatch(actions.setSearchPanelWidth(width))}>
             <SearchPanel />
           </RightPanel>
+          <RightPanel dataElement="movePanel" onResize={(width) => dispatch(actions.setMovePanelWidth(width))}>
+            <MovePanel />
+           </RightPanel>
           <RightPanel dataElement="notesPanel" onResize={(width) => dispatch(actions.setNotesPanelWidth(width))}>
             <NotesPanel />
           </RightPanel>

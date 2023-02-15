@@ -47,6 +47,7 @@ function SearchPanel(props) {
   }, [closeSearchPanel]);
 
   const onClickResult = React.useCallback(function onClickResult(resultIndex, result) {
+    console.log(resultIndex,"resultIndex",result);
     setActiveResult(result);
     if (!isInDesktopOnlyMode && isMobile) {
       closeSearchPanel();

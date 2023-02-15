@@ -95,6 +95,8 @@ window.documentViewer = {
   getAnnotationHistoryManager: () => ({}),
   getRotation: () => 0,
   clearSearchResults: noop,
+  // ========================
+  clearMoveResults: noop,
   getTool: (toolName) => mockTool,
   setWatermark: noop,
   getPageHeight: () => DEFAULT_PAGE_HEIGHT,

@@ -27,6 +27,7 @@ class HeaderItems extends React.PureComponent {
 
     const headers = items.map((item, i) => {
       const { type, dataElement, hidden, hiddenOnMobileDevice } = item;
+
       let mediaQueryClassName = hidden ? hidden.map((screen) => {
         let result = '';
         if (isInDesktopOnlyMode) {

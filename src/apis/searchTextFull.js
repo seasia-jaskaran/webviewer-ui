@@ -57,6 +57,7 @@ export default function searchTextFull(store) {
       // dispatch is only set when doing search through API (instance.searchText())
       // When triggering search through UI, then redux updates are already handled inside component
       dispatch(actions.openElement('searchPanel'));
+      console.log(actions.searchTextFull(searchValue, options),"dispatchhhhhhh");
       dispatch(actions.searchTextFull(searchValue, options));
     }
 

@@ -49,6 +49,9 @@ export const getAutoFocusNoteOnAnnotationSelection = (state) => state.viewer.aut
 export const getNotesInLeftPanel = (state) => state.viewer.notesInLeftPanel;
 export const getLeftPanelWidth = (state) => state.viewer.panelWidths.leftPanel;
 export const getSearchPanelWidth = (state) => state.viewer.panelWidths.searchPanel;
+// ===============================================================================
+export const getMovePanelWidth = (state) => state.viewer.panelWidths.movePanel;
+
 export const getNotesPanelWidth = (state) => state.viewer.panelWidths.notesPanel;
 
 export const getDeleteScaleInfo = (state) => state.viewer.deleteScale;
@@ -64,11 +67,16 @@ export const getTextEditingPanelWidth = (state) => state.viewer.panelWidths.text
 const RESIZE_BAR_WIDTH = 14; // 14px Need to update this if styling results in a change to width.
 export const getLeftPanelWidthWithResizeBar = (state) => state.viewer.panelWidths.leftPanel + RESIZE_BAR_WIDTH;
 export const getSearchPanelWidthWithResizeBar = (state) => state.viewer.panelWidths.searchPanel + RESIZE_BAR_WIDTH;
+// =======================================================================
+export const getMovePanelWidthWithResizeBar = (state) => state.viewer.panelWidths.movePanel + RESIZE_BAR_WIDTH;
 export const getNotesPanelWidthWithResizeBar = (state) => state.viewer.panelWidths.notesPanel + RESIZE_BAR_WIDTH;
 export const getComparePanelWidthWithResizeBar = (state) => state.viewer.panelWidths.comparePanel + RESIZE_BAR_WIDTH;
 export const getDocumentContentContainerWidthStyle = (state) => {
   const notesPanelWidth = getNotesPanelWidthWithResizeBar(state);
   const searchPanelWidth = getSearchPanelWidthWithResizeBar(state);
+  // ==============================================================
+  const movePanelWidth = getMovePanelWidthWithResizeBar(state);
+
   const leftPanelWidth = getLeftPanelWidthWithResizeBar(state);
   const redactionPanelWidth = getRedactionPanelWidth(state);
   const textEditingPanelWidth = getTextEditingPanelWidth(state);
@@ -77,6 +85,8 @@ export const getDocumentContentContainerWidthStyle = (state) => {
   const isLeftPanelOpen = isElementOpen(state, 'leftPanel');
   const isNotesPanelOpen = isElementOpen(state, 'notesPanel');
   const isSearchPanelOpen = isElementOpen(state, 'searchPanel');
+  // ==========================
+  const isMovePanelOpen = isElementOpen(state, 'movePanel');
   const isRedactionPanelOpen = isElementOpen(state, 'redactionPanel');
   const isTextEditingPanelOpen = isElementOpen(state, 'textEditingPanel');
   const isWv3dPropertiesPanelOpen = isElementOpen(state, 'wv3dPropertiesPanel');
@@ -87,6 +97,8 @@ export const getDocumentContentContainerWidthStyle = (state) => {
     (isLeftPanelOpen ? leftPanelWidth : 0) +
     (isNotesPanelOpen ? notesPanelWidth : 0) +
     (isSearchPanelOpen ? searchPanelWidth : 0) +
+    // ===============================================
+    (isMovePanelOpen ? movePanelWidth : 0) +
     (isRedactionPanelOpen ? redactionPanelWidth : 0) +
     (isTextEditingPanelOpen ? textEditingPanelWidth : 0) +
     (isWv3dPropertiesPanelOpen ? wv3dPropertiesPanelWidth : 0) +
@@ -425,28 +437,38 @@ export const getServerUrl = (state) => state.advanced.serverUrl;
 
 // search
 export const getSearchValue = (state) => state.search.value;
+// =========================================
+export const getMoveValue = (state) => state.move.value;
 
 export const shouldClearSearchPanelOnClose = (state) => state.search.clearSearchPanelOnClose;
+// ====================================================================
+export const shouldClearMovePanelOnClose = (state) => state.move.clearMovePanelOnClose;
 
-export const isCaseSensitive = (state) => state.search.isCaseSensitive;
+export const isCaseSensitive = (state) => state?.search ? state.search.isCaseSensitive : state.move.isCaseSensitive;
 
-export const getReplaceValue = (state) => state.search.replaceValue;
+export const getReplaceValue = (state) => state?.search ? state.search.replaceValue : state.move.replaceValue;
 
-export const getNextResultValue = (state) => state.search.nextResult;
+export const getNextResultValue = (state) => state?.search ? state.search.nextResult :state.move.nextResult;
 
-export const isWholeWord = (state) => state.search.isWholeWord;
+export const isWholeWord = (state) => state?.search ? state.search.isWholeWord :state.move.isWholeWord;
 
-export const isWildcard = (state) => state.search.isWildcard;
+export const isWildcard = (state) => state?.search ? state.search.isWildcard :state.move.isWildcard;
 
-export const isSearchUp = (state) => state.search.isSearchUp;
+export const isSearchUp = (state) => state?.search ? state.search.isSearchUp :state.move.isSearchUp;
 
-export const isAmbientString = (state) => state.search.isAmbientString;
+export const isAmbientString = (state) => state?.search ? state.search.isAmbientString :state.move.isAmbientString;
 
-export const isRegex = (state) => state.search.isRegex;
+export const isRegex = (state) => state?.search ? state.search.isRegex :state.move.isRegex;
 
 export const isProcessingSearchResults = (state) => state.search.isProcessingSearchResults;
+// ========================================================================================
+export const isProcessingMoveResults = (state) => state.move.isProcessingMoveResults;
+
 
 export const getRedactionSearchPatterns = (state) => state.search.redactionSearchPatterns;
+// =================================================================================
+export const getRedactionMovePatterns = (state) => state.move.redactionMovePatterns;
+// =================================================================================
 
 export const getNoteTransformFunction = (state) => state.viewer.noteTransformFunction;
 

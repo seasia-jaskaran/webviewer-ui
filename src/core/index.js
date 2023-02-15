@@ -37,6 +37,8 @@ import setViewerElement from './setViewerElement';
 import isContinuousDisplayMode from './isContinuousDisplayMode';
 import isScrollableDisplayMode from './isScrollableDisplayMode';
 import isSearchResultEqual from './isSearchResultEqual';
+// ==========================================================
+import isMoveResultEqual from './isMoveResultEqual';
 import scrollViewUpdated from './scrollViewUpdated';
 import canModify from './canModify';
 import canModifyContents from './canModifyContents';
@@ -47,6 +49,8 @@ import getCompleteRotation from './getCompleteRotation';
 import getRotation from './getRotation';
 import getPageInfo from './getPageInfo';
 import clearSearchResults from './clearSearchResults';
+import clearMoveResults from './clearMoveResults';
+// =======================================================
 import getPageSearchResults from './getPageSearchResults';
 import displayAdditionalSearchResult from './displayAdditionalSearchResult';
 import displayAdditionalSearchResults from './displayAdditionalSearchResults';
@@ -55,6 +59,17 @@ import getActiveSearchResult from './getActiveSearchResult';
 import setActiveSearchResult from './setActiveSearchResult';
 import textSearchInit from './textSearchInit';
 import getSearchMode from './getSearchMode';
+// ============================================================
+import getPageMoveResults from './getPageMoveResults';
+import displayAdditionalMoveResult from './displayAdditionalMoveResult';
+import displayAdditionalMoveResults from './displayAdditionalMoveResults';
+
+import displayMoveResult from './displayMoveResult';
+import getActiveMoveResult from './getActiveMoveResult';
+import setActiveMoveResult from './setActiveMoveResult';
+import textMoveInit from './textMoveInit';
+import getMoveMode from './getMoveMode';
+// ==============================================================
 import getResultCode from './getResultCode';
 import getPageWidth from './getPageWidth';
 import getPageHeight from './getPageHeight';
@@ -182,6 +197,8 @@ export default {
   isContinuousDisplayMode,
   isScrollableDisplayMode,
   isSearchResultEqual,
+  // ============================
+  isMoveResultEqual,
   scrollViewUpdated,
   canModify,
   canModifyContents,
@@ -200,6 +217,17 @@ export default {
   textSearchInit,
   displaySearchResult,
   getSearchMode,
+  // =========================================
+  clearMoveResults,
+  getPageMoveResults,
+  displayAdditionalMoveResult,
+  displayAdditionalMoveResults,
+  getActiveMoveResult,
+  setActiveMoveResult,
+  textMoveInit,
+  displayMoveResult,
+  getMoveMode,
+  // =========================================
   getResultCode,
   getPageWidth,
   getPageHeight,

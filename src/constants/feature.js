@@ -56,6 +56,7 @@ export default {
   PageNavigation: 'PageNavigation',
   MouseWheelZoom: 'MouseWheelZoom',
   Search: 'Search',
+  Move: 'Move',
   MathSymbols: 'MathSymbols',
   OutlineEditing: 'OutlineEditing',
   NotesPanelVirtualizedList: 'NotesPanelVirtualizedList',

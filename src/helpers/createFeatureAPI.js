@@ -233,6 +233,19 @@ export default (enable, store) => (features, priority = PRIORITY_TWO) => {
         }
       },
     },
+    // =======================================
+
+    [Feature.Move]: {
+      dataElements: ['moveButton'],
+      fn: () => {
+        const keys = concatKeys(Keys.CTRL_F, Keys.COMMAND_F);
+        if (enable) {
+          hotkeys.on(keys);
+        } else {
+          hotkeys.off(keys);
+        }
+      },
+    },
     [Feature.MathSymbols]: {
       dataElements: ['mathSymbolsButton', 'richTextPopup'],
     },

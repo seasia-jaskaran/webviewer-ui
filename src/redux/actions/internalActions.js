@@ -16,6 +16,16 @@ import core from 'core';
  * For example, instance.disableElements has priority 3 and instance.enableFeatures has priority 1.
  * So calling instance.enableFeatures([instance.Feature.NotesPanel]) won't enable the notes panel if it's disabled by instance.disableElements(['notesPanel'])
  */
+
+
+export const setSideData=(data)=> {
+  return {
+    type: data.length ? "DATA_TRUE":"DATA_FALSE",
+    payload:{data}
+  };
+}
+
+
 export const disableElement = (dataElement, priority) => (
   dispatch,
   getState,
@@ -520,6 +530,53 @@ export const setWildcard = (isWildcard) => ({
 
 export const resetSearch = () => ({ type: 'RESET_SEARCH', payload: {} });
 
+
+// =============================================================
+
+
+export const moveText = (moveValue, options) => ({
+  type: 'MOVE_TEXT',
+  payload: { moveValue, options },
+});
+export const moveTextFull = (moveValue, options) => ({
+  type: 'MOVE_TEXT_FULL',
+  payload: { moveValue, options },
+});
+export const addMoveListener = (func) => ({
+  type: 'ADD_MOVE_LISTENER',
+  payload: { func },
+});
+export const removeMoveListener = (func) => ({
+  type: 'REMOVE_MOVE_LISTENER',
+  payload: { func },
+});
+export const setMoveValue = (value) => ({
+  type: 'SET_MOVE_VALUE',
+  payload: { value },
+});
+// export const setReplaceValue = (replaceText) => ({
+//   type: 'SET_REPLACE_VALUE',
+//   payload: { replaceText },
+// });
+// export const setNextResultValue = (nextResult, nextResultIndex) => ({
+//   type: 'SET_NEXT_RESULT',
+//   payload: { nextResult, nextResultIndex },
+// });
+// export const setCaseSensitive = (isCaseSensitive) => ({
+//   type: 'SET_CASE_SENSITIVE',
+//   payload: { isCaseSensitive },
+// });
+// export const setWholeWord = (isWholeWord) => ({
+//   type: 'SET_WHOLE_WORD',
+//   payload: { isWholeWord },
+// });
+// export const setWildcard = (isWildcard) => ({
+//   type: 'SET_WILD_CARD',
+//   payload: { isWildcard },
+// });
+
+export const resetMove = () => ({ type: 'RESET_MOVE', payload: {} });
+  
 export const setNoteTransformFunction = (noteTransformFunction) => ({
   type: 'SET_NOTE_TRANSFORM_FUNCTION',
   payload: { noteTransformFunction },
@@ -576,6 +633,11 @@ export const clearCurrentContentBeingEdited = () => ({
 export const setProcessingSearchResults = (isProcessingSearchResults) => ({
   type: 'SET_PROCESSING_SEARCH_RESULTS',
   payload: { isProcessingSearchResults },
+});
+// =============================================================
+export const setProcessingMoveResults = (isProcessingMoveResults) => ({
+  type: 'SET_PROCESSING_MOVE_RESULTS',
+  payload: { isProcessingMoveResults },
 });
 
 export const triggerResetAudioPlaybackPosition = (shouldResetAudioPlaybackPosition) => ({

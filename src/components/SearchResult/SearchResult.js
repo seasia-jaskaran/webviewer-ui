@@ -156,6 +156,7 @@ function SearchResult(props) {
   }
 
   return (
+    <>
     <VirtualizedList
       width={200}
       height={height}
@@ -168,6 +169,7 @@ function SearchResult(props) {
       ref={listRef}
       scrollToIndex={activeResultIndex - 1}
     />
+    </>
   );
 }
 SearchResult.propTypes = SearchResultPropTypes;

@@ -78,6 +78,8 @@ export default {
     panelWidths: {
       leftPanel: 264,
       searchPanel: 293,
+      // ===================
+      movePanel: 293,
       notesPanel: 293,
       redactionPanel: 330,
       textEditingPanel: 330,
@@ -110,6 +112,7 @@ export default {
           img: 'ic-hamburger-menu',
           title: 'component.menuOverlay',
         },
+        
         {
           type: 'divider',
           hidden: ['small-mobile'],
@@ -157,6 +160,20 @@ export default {
           title: 'component.searchPanel',
           hidden: ['small-mobile'],
         },
+        // ==================================
+        {
+          type: 'toggleElementButton',
+          dataElement: 'moveButton',
+          element: 'movePanel',
+          img: 'icon-header-move',
+          title: 'component.movePanel',
+          hidden: ['small-mobile'],
+          // onClick:(dispatch)=>{
+          //   dispatch(actions.toggleElement('notesPanel'));
+          //   // Trigger with a delay so we ensure the panel is open before we compute correct coordinates of annotation
+          //   setTimeout(() => dispatch(actions.toggleElement('annotationNoteConnectorLine')), 400);
+          // }
+        },
         {
           type: 'toggleElementButton',
           dataElement: 'toggleNotesButton',
@@ -189,6 +206,14 @@ export default {
           element: 'searchPanel',
           img: 'icon-header-search',
           title: 'component.searchPanel',
+        },
+        // ===================================
+        {
+          type: 'toggleElementButton',
+          dataElement: 'moveButton',
+          element: 'movePanel',
+          img: 'icon-header-move',
+          title: 'component.movePanel',
         },
         {
           type: 'toggleElementButton',
@@ -2011,6 +2036,42 @@ export default {
       },
       emails: {
         label: 'redactionPanel.search.emails',
+        icon: 'redact-icons-email',
+        type: redactionTypeMap['EMAIL'],
+        regex: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b/,
+      },
+    },
+  },
+
+  // ========================================================
+
+  move: {
+    value: '',
+    replaceValue: '',
+    nextResult: null,
+    isCaseSensitive: false,
+    isWholeWord: false,
+    isWildcard: false,
+    isRegex: false,
+    isMoveUp: false,
+    isAmbientString: false,
+    clearMovePanelOnClose: false,
+    results: [],
+    redactionMovePatterns: {
+      creditCards: {
+        label: 'redactionPanel.move.creditCards',
+        icon: 'redact-icons-credit-card',
+        type: redactionTypeMap['CREDIT_CARD'],
+        regex: /\b(?:\d[ -]*?){13,16}\b/,
+      },
+      phoneNumbers: {
+        label: 'redactionPanel.move.phoneNumbers',
+        icon: 'redact-icons-phone-number',
+        type: redactionTypeMap['PHONE'],
+        regex: /\d?(\s?|-?|\+?|\.?)((\(\d{1,4}\))|(\d{1,3})|\s?)(\s?|-?|\.?)((\(\d{1,3}\))|(\d{1,3})|\s?)(\s?|-?|\.?)((\(\d{1,3}\))|(\d{1,3})|\s?)(\s?|-?|\.?)\d{3}(-|\.|\s)\d{4,5}/,
+      },
+      emails: {
+        label: 'redactionPanel.move.emails',
         icon: 'redact-icons-email',
         type: redactionTypeMap['EMAIL'],
         regex: /\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,6}\b/,

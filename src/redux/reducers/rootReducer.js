@@ -5,10 +5,13 @@ import viewerReducer from 'reducers/viewerReducer';
 import searchReducer from 'reducers/searchReducer';
 import userReducer from 'reducers/userReducer';
 import documentReducer from 'reducers/documentReducer';
+import dataReducer from 'reducers/dataReducer';
+
 import wv3dPropertiesPanelReducer from 'src/redux/reducers/wv3dPropertiesPanelReducer';
 
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import moveReducer from './moveReducer';
 
 const viewerPersistConfig = {
   key: 'viewer',
@@ -19,10 +22,12 @@ const viewerPersistConfig = {
 export default combineReducers({
   viewer: persistReducer(viewerPersistConfig, viewerReducer(initialState.viewer)),
   search: searchReducer(initialState.search),
+  move: moveReducer(initialState.move),
   user: userReducer(initialState.user),
   document: documentReducer(initialState.document),
   // TODO: refactor in another PR to remove state.advanced. It's not necessary to have this because those states never change.
   advanced: () => initialState.advanced,
   featureFlags: () => initialState.featureFlags,
   wv3dPropertiesPanel: wv3dPropertiesPanelReducer(initialState.wv3dPropertiesPanel),
+  dataReducer:dataReducer
 });

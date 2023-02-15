@@ -1,13 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-
 import Button from 'components/Button';
-
 import selectors from 'selectors';
 import actions from 'actions';
 import useMedia from 'hooks/useMedia';
 
-const ToggleElementButton = ({
+const ToggleElementButton = ({       
   onClick,
   dataElement,
   isElementDisabled,
@@ -18,6 +16,7 @@ const ToggleElementButton = ({
   if (isElementDisabled) {
     return null;
   }
+  
 
   return (
     <Button {...restProps} isActive={isActive} dataElement={dataElement} onClick={onClick} ariaLabel={ariaLabel} />
@@ -34,6 +33,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+  
   onClick: () => {
     dispatch(actions.toggleElement(ownProps.element));
   },
@@ -52,9 +52,8 @@ const connectedComponent = (props) => {
     // Default value
     false,
   );
-
   return (
-    <ConnectedToggleElementButton {...props} isMobile={isMobile} />
+    <ConnectedToggleElementButton {...props} isMobile={isMobile} named={"kartik"}/>       
   );
 };
 

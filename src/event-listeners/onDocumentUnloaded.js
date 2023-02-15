@@ -8,6 +8,7 @@ export default (dispatch, documentViewerKey) => () => {
       'pageNavOverlay',
       'notesPanel',
       'searchPanel',
+      'movePanel',
       'leftPanel',
       'signatureValidationModal',
       'audioPlaybackPopup',
@@ -24,6 +25,9 @@ export default (dispatch, documentViewerKey) => () => {
     dispatch(actions.setTotalPages(0));
     dispatch(actions.setSearchValue(''));
     core.clearSearchResults();
+    // ==================================
+    dispatch(actions.setMoveValue(''));
+    core.clearMoveResults();
   }
   dispatch(actions.setZoom(1, documentViewerKey));
 };

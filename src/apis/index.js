@@ -253,6 +253,7 @@ import {
 import getLocalizedText from './getLocalizedText';
 import getDocumentViewer from './getDocumentViewer';
 import { enableMultiViewerSync, disableMultiViewerSync, isMultiViewerSyncing } from './multiViewerSync';
+import  setSideData  from './setSideData';
 
 export default (store) => {
   const CORE_NAMESPACE = 'Core';
@@ -277,6 +278,8 @@ export default (store) => {
     NotesPanelSortStrategy,
     Theme,
     RedactionSearchPatterns,
+    // -----------------------------------
+    
     addSearchListener,
     addSortStrategy: addSortStrategy(store),
     annotationPopup: annotationPopup(store),
@@ -322,6 +325,8 @@ export default (store) => {
     removeSearchListener,
     searchText: searchText(store.dispatch),
     searchTextFull: searchTextFull(store),
+    // ====================================
+    setSideData:setSideData(store),
     overrideSearchExecution,
     setActiveHeaderGroup: setActiveHeaderGroup(store),
     setActiveLeftPanel: setActiveLeftPanel(store),
